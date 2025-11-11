@@ -1,4 +1,30 @@
 body{
 	margin: auto;
-	width: 60%;
+		width: 60%;
+		background-color: rgb(145, 195, 255);
+		color: rgb(255, 255, 255);
+		font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1{
+	text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+	body{
+		margin: auto;
+		width: 60%;
+		background-color: rgb(145, 195, 255);
+		color: rgb(255, 255, 255);
+	}
+	
+	main{
+	
+		display: grid;
+		grid-gap: 1rem;
+		
+		grid-template-columns: 1fr 1fr 1fr 
+	}
+	
+	
 }
