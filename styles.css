@@ -14,18 +14,26 @@ body{
 		font-size: large;
 }
 
-h1{
+h2{
 	text-align: center;
+	width: 300px;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 800px) {
+
+
+
 	body{
 		margin: auto;
 		width: 60%;
-		background-color: rgb(145, 195, 255);
 		color: rgb(255, 255, 255);
+
 	}
-	
+
+	h1{
+	text-align: center;
+}
+
 	main{
 	
 		display: grid;
@@ -33,7 +41,31 @@ h1{
 		
 		grid-template-columns: 1fr 1fr 1fr 
 	}
-	
+	h1{
+	text-align: center;
+
+background: linear-gradient(45deg, 
+        #a692ff 0%,    
+        #6069e1 33%,  
+        #8ed6ff 66%,    
+        #3047ca 100%    
+    );
+
+animation: gradientShift 8s ease-in-out infinite;
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+}
 	
 }
 

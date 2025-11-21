@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Button Sound</title>
+  <style>
+    #soundButton {
+      width: 200px;   /* adjust as needed */
+      cursor: pointer;
+    }
+    body{
+        align-items: center;
+    }
+  section{
+    display: block;
+    margin: 0 auto;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+body{
+  background-color: rgb(217, 255, 0);
+}
+  </style>
+</head>
+<body>
+  <br>
+<img src="media/aseabam.png" alt="" width="200px
+">
+ <br>
+  <img id="soundButton" src="media/rec.jpg" alt="Play Sound">
+
+<img src="media/Screenshot 2025-11-13 at 2.40.33 PM.png" alt="">
+  <audio id="buttonSound" src="media/Ha Ha, Hee Hee.mp3"></audio>
+<br><br>
+<section>
+<a href="index.html">BACK HOME</a>
+</section>
+
+  <script>
+    const btn = document.getElementById("soundButton");
+    const sound = document.getElementById("buttonSound");
+
+    btn.addEventListener("click", () => {
+      if (sound.paused) {
+        sound.play();
+      } else {
+        sound.pause();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+body{
+	margin: auto;
+		width: 60%;
+		background: linear-gradient(45deg, 
+        #16db1d 0%,    
+        #27a214 33%,  
+        #64db24 66%,    
+        #18b538 100%    
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
+		color: rgb(255, 255, 255);
+		font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		font-size: large;
+}
+
+h1{
+	text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+	body{
+		margin: auto;
+		width: 60%;
+		color: rgb(255, 255, 255);
+	
+	}
+	
+h1{
+	width: 100%;
+}
+
+	main{
+	
+		display: grid;
+		grid-gap: 1rem;
+		
+		grid-template-columns: 1fr 1fr 1fr 
+	}
+	
+	
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
