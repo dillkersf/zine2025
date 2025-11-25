@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Monkey City</title>
+    <style>
+       body{
+        background-color: rgb(112, 112, 253);
+       }
+    </style>
+    
+</head>
+<body>
+<h1>
+        <a href="index.html">
+            <img src="images/home 1.png" alt="sign" width="130
+            px">
+        </a>
+
+    </h1>
+
+<br><br><br>
+
+<!-- Multiple draggable images -->
+<img class="draggable" src="images/chillin.gif" style="position:absolute; left:20px; top:20px;" width="310px">
+<img class="draggable" src="images/aseabam.png" style="position:absolute; left:200px; top:80px;" width="310px">
+<img class="draggable" src="images/home 1.png" style="position:absolute; left:120px; top:200px;" width="310px">
+
+<script>
+let selected = null;   // currently picked-up image
+let offsetX = 0;
+let offsetY = 0;
+
+// For all images with class="draggable"
+document.querySelectorAll(".draggable").forEach(img => {
+  img.addEventListener("pointerdown", (e) => {
+    // If no item selected, pick this one up
+    if (!selected) {
+      selected = img;
+
+      // compute cursor→image offset so image doesn't jump
+      const rect = img.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+
+      img.style.opacity = 0.6; // visual feedback
+    }
+
+    e.preventDefault();
+  });
+});
+
+document.addEventListener("pointermove", (e) => {
+  if (!selected) return;
+
+  // Move the selected image with the cursor
+  selected.style.left = (e.clientX - offsetX) + "px";
+  selected.style.top = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("pointerup", () => {
+  if (selected) {
+    selected.style.opacity = 1;
+    selected = null; // drop it
+  }
+});
+</script>
+
+</body>
+</html>
