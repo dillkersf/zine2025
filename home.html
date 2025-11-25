@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sea Monkey City</title>
-    <style>
-       body{
-        background-color: rgb(112, 112, 253);
-       }
-    </style>
-    
-</head>
 <body>
-<h1>
-        <a href="index.html">
-            <img src="images/home 1.png" alt="sign" width="130
-            px">
-        </a>
 
-    </h1>
+<style>
+  .draggable {
+    position:absolute;
+    touch-action:none;
+  }
 
-<br><br><br>
+  body.dragging {
+    touch-action:none;
+    overflow:hidden;
+  }
+  
+body{
+
+    background-color: blue;
+}
+  @media only screen and (min-width: 600px) {
+
+
+
+	body{
+		margin: auto;
+		width: 60%;
+		color: rgb(153, 0, 0);
+
+	}
+
+	h1{
+	text-align: center;
+}  
+}
+
+</style>
 
 <!-- Multiple draggable images -->
-<img class="draggable" src="images/chillin.gif" style="position:absolute; left:20px; top:20px;" width="310px">
-<img class="draggable" src="images/aseabam.png" style="position:absolute; left:200px; top:80px;" width="310px">
-<img class="draggable" src="images/home 1.png" style="position:absolute; left:120px; top:200px;" width="310px">
+<img class="draggable" src="images/algae.png"   style="left:20px; top:20px;" width="230px" draggable="false">
+<img class="draggable" src="images/aseabam.png" style="left:200px; top:80px;" width="230px" draggable="false">
+<img class="draggable" src="images/home 1.png" style="left:120px; top:200px;" width="230px" draggable="false">
 
 <script>
-let selected = null;   // currently picked-up image
+let selected = null;
 let offsetX = 0;
 let offsetY = 0;
 
-// For all images with class="draggable"
 document.querySelectorAll(".draggable").forEach(img => {
+
+  // prevent browser image dragging
+  img.addEventListener("dragstart", (e) => e.preventDefault());
+
   img.addEventListener("pointerdown", (e) => {
-    // If no item selected, pick this one up
-    if (!selected) {
-      selected = img;
+    selected = img;
 
-      // compute cursor→image offset so image doesn't jump
-      const rect = img.getBoundingClientRect();
-      offsetX = e.clientX - rect.left;
-      offsetY = e.clientY - rect.top;
+    const rect = img.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
 
-      img.style.opacity = 0.6; // visual feedback
-    }
-
-    e.preventDefault();
+    img.style.opacity = 0.6;
+    document.body.classList.add("dragging");
   });
 });
 
 document.addEventListener("pointermove", (e) => {
   if (!selected) return;
 
-  // Move the selected image with the cursor
   selected.style.left = (e.clientX - offsetX) + "px";
   selected.style.top = (e.clientY - offsetY) + "px";
 });
@@ -62,7 +72,8 @@ document.addEventListener("pointermove", (e) => {
 document.addEventListener("pointerup", () => {
   if (selected) {
     selected.style.opacity = 1;
-    selected = null; // drop it
+    selected = null;
+    document.body.classList.remove("dragging");
   }
 });
 </script>
