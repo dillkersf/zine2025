@@ -101,5 +101,26 @@ document.addEventListener("pointerup", () => {
 });
 </script>
 
+<script>
+window.addEventListener("load", () => {
+  const items = document.querySelectorAll(".draggable");
+  let x = 20;
+  let y = 20;
+  const spacing = 260;
+
+  items.forEach((img, i) => {
+    img.style.left = x + "px";
+    img.style.top  = y + "px";
+
+    x += spacing;
+    if (x + spacing > window.innerWidth) {
+      x = 20;
+      y += spacing;
+    }
+  });
+});
+</script>
+
+
 </body>
 </html>
