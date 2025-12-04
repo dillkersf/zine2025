@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Button Sound</title>
+  <style>
+    body {
+      background-color: rgb(217, 255, 0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* GRID LAYOUT */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP IMAGE STILL LINKS OUT -->
+  <a href="index.html">
+    <img src="images/aseabam.png" width="200">
+  </a>
+
+  <br>
+
+  <!-- GRID OF SOUND IMAGES -->
+  <div class="grid-container">
+
+    <img class="sound-image" 
+         data-sound="musicphotos/song.mp3"
+         src="musicphotos/cd.png">
+
+         <img class="sound-image" 
+         data-sound="musicphotos/song2.mp3"
+         src="musicphotos/casset.png">
+
+    <img class="sound-image" 
+         data-sound="media/song1.mp3"
+         src="musicphotos/reccdisc.png">
+
+    <!-- ADD MORE IMAGES HERE -->
+    <!-- Example:
+    <img class="sound-image" 
+         data-sound="media/song3.mp3"
+         src="media/pic3.png">
+    -->
+
+  </div>
+
+  <script>
+    let currentAudio = null;
+
+    document.querySelectorAll(".sound-image").forEach(img => {
+      const soundFile = img.getAttribute("data-sound");
+      const audio = new Audio(soundFile);
+
+      img.addEventListener("click", () => {
+
+        // Pause/Play same image audio
+        if (currentAudio === audio) {
+          audio.paused ? audio.play() : audio.pause();
+          return;
+        }
+
+        // Pause previously playing audio
+        if (currentAudio && !currentAudio.paused) {
+          currentAudio.pause();
+        }
+
+        currentAudio = audio;
+        audio.play();
+      });
+    });
+  </script>
+
+</body>
+</html>
