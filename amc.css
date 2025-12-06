@@ -38,12 +38,6 @@ h1{
 	h1{
 	text-align: center;
 
-background: linear-gradient(45deg, 
-        #a692ff 0%,    
-        #7078eb 33%,  
-        #8ed6ff 66%,    
-        #5e6eca 100%    
-    );
 
 animation: gradientShift 8s ease-in-out infinite;
 
